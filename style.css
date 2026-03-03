@@ -1,170 +1,168 @@
-/* Basit bir reset + box model ayarı */
-*,
-*::before,
-*::after {
-  box-sizing: border-box; /* Alternate box model yaklaşımı */
+/* Mahmut Öney - Basit CV CSS (web sitesinde kullanmak için) */
+
+:root{
+  --bg:#0b1220;
+  --card:#111a2e;
+  --text:#eaf0ff;
+  --muted:#a9b3cf;
+  --accent:#4f8cff;
+  --border:rgba(255,255,255,.10);
 }
 
-:root {
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  line-height: 1.5;
+*{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  background: radial-gradient(1200px 600px at 20% 0%, rgba(79,140,255,.20), transparent 60%),
+              radial-gradient(900px 500px at 90% 10%, rgba(80,255,190,.10), transparent 55%),
+              var(--bg);
+  color:var(--text);
+  line-height:1.6;
 }
 
-body {
-  margin: 0;
-  background: #f5f5f5;
-  color: #222;
+.cv{
+  max-width: 980px;
+  margin: 40px auto;
+  padding: 0 16px;
 }
 
-/* Layout yardımcı sınıfı */
-.container {
-  width: min(1100px, 92%);
-  margin: 0 auto;
+.cv__card{
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 22px;
+  box-shadow: 0 18px 50px rgba(0,0,0,.35);
 }
 
-/* Skip link (erişilebilirlik) */
-.skip-link {
-  position: absolute;
-  left: -999px;
-  top: 8px;
-  padding: 8px 10px;
-  background: #fff;
-  border: 1px solid #ddd;
-}
-.skip-link:focus {
-  left: 8px;
+/* Üst kısım */
+.cv__header{
+  display:flex;
+  gap:16px;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
 }
 
-/* Header */
-.site-header {
-  background: #ffffff;
-  border-bottom: 1px solid #e6e6e6;
-}
-.header-inner {
-  padding: 18px 0;
-}
-.brand {
-  margin: 0;
-  font-size: 1.6rem;
-}
-.tagline {
-  margin: 6px 0 0;
-  color: #555;
+.cv__title{
+  margin:0;
+  font-size: clamp(22px, 3vw, 30px);
+  letter-spacing:.3px;
 }
 
-/* Navigation + pseudo-class örnekleri */
-.site-nav {
-  background: #111;
+.cv__subtitle{
+  margin:4px 0 0;
+  color: var(--muted);
+  font-size: 14px;
 }
-.nav-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  gap: 14px;
+
+/* Etiketler */
+.cv__badges{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
 }
-.nav-list a {
-  display: inline-block;
-  padding: 12px 10px;
-  color: #fff;
+
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(17,26,46,.55);
+  color: var(--text);
+  font-size: 13px;
+  white-space:nowrap;
+}
+
+.badge--accent{
+  border-color: rgba(79,140,255,.45);
+  background: rgba(79,140,255,.14);
+}
+
+/* İç düzen */
+.cv__grid{
+  display:grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+@media (max-width: 860px){
+  .cv__grid{ grid-template-columns: 1fr; }
+}
+
+/* Bölümler */
+.section{
+  border: 1px solid var(--border);
+  background: rgba(17,26,46,.35);
+  border-radius: 14px;
+  padding: 16px;
+}
+
+.section__title{
+  margin:0 0 10px;
+  font-size: 15px;
+  letter-spacing:.6px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.item{
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  background: rgba(255,255,255,.03);
+}
+
+.item + .item{ margin-top: 10px; }
+
+.item:hover{
+  border-color: rgba(79,140,255,.35);
+  background: rgba(79,140,255,.08);
+}
+
+.item__title{
+  margin:0;
+  font-weight: 650;
+  font-size: 15px;
+}
+
+.item__meta{
+  margin:4px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.item__desc{
+  margin:8px 0 0;
+  color: var(--text);
+  font-size: 14px;
+}
+
+/* Linkler */
+a{
+  color: var(--accent);
   text-decoration: none;
 }
-.nav-list a:hover,
-.nav-list a:focus {
-  text-decoration: underline;
-}
+a:hover{ text-decoration: underline; }
 
-/* Main layout: grid ile iki sütun + kartlar */
-.layout {
-  display: grid;
-  gap: 16px;
-  grid-template-columns: 2fr 1fr;
-  padding: 18px 0 28px;
+/* Liste */
+ul{
+  margin: 8px 0 0;
+  padding-left: 18px;
+  color: var(--text);
 }
+li{ margin: 6px 0; }
 
-.card {
-  background: #fff;
-  border: 1px solid #e6e6e6;
-  border-radius: 12px;
-  padding: 14px 14px;
-}
-
-/* Sidebar’ın daha üstte görünmesi için grid */
-.sidebar {
-  grid-row: span 2;
-}
-
-h2 {
-  margin: 0 0 10px;
-  font-size: 1.25rem;
-}
-
-/* Class ve ID selector örneği */
-.badge {
-  display: inline-block;
-  padding: 2px 8px;
-  border-radius: 999px;
-  border: 1px solid #ddd;
-  background: #fafafa;
-  font-size: 0.9rem;
-}
-#special {
-  font-weight: 700;
-  text-decoration: underline;
-}
-
-.note a:link {
-  color: #0a58ca;
-}
-.note a:visited {
-  color: #6f42c1;
-}
-.note a:hover {
-  background: #fff3cd;
-}
-
-/* Basit buton */
-.btn {
-  padding: 10px 12px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  background: #fff;
-  cursor: pointer;
-}
-.btn:hover {
-  transform: translateY(-1px);
-}
-
-/* Box model demo */
-.box-demo {
-  padding: 10px;
-  background: #fafafa;
-  border-radius: 10px;
-  border: 1px dashed #ddd;
-}
-
-.box {
-  width: 100%;
-  padding: 14px;               /* padding */
-  border: 3px solid #111;      /* border */
-  margin: 10px 0;              /* margin */
-  background: #fff;
-}
-
-/* Footer */
-.site-footer {
-  border-top: 1px solid #e6e6e6;
-  background: #fff;
-  padding: 14px 0;
-  color: #555;
-}
-
-/* Responsive: ekran daralınca tek sütun */
-@media screen and (max-width: 900px) {
-  .layout {
-    grid-template-columns: 1fr;
-  }
-  .nav-list {
-    flex-wrap: wrap;
-  }
+/* Küçük yardımcı sınıflar */
+.muted{ color: var(--muted); }
+.hr{
+  height:1px;
+  background: var(--border);
+  border:0;
+  margin: 14px 0;
 }
