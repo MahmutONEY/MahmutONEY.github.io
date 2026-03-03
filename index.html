@@ -1,88 +1,316 @@
 <!doctype html>
 <html lang="tr">
-  <head>
-    <!-- UTF-8 önerilir (metin/karakter bozulmalarını önler) -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>YMH354 - CSS ile Tasarım Örneği</title>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mahmut Öney - CV</title>
+  <style>
+    /* Mahmut Öney - Basit CV CSS (web sitesinde kullanmak için) */
 
-    <!-- External CSS (en önerilen yöntem) -->
-    <link rel="stylesheet" href="style.css" />
-  </head>
+    :root{
+      --bg:#0b1220;
+      --card:#111a2e;
+      --text:#eaf0ff;
+      --muted:#a9b3cf;
+      --accent:#4f8cff;
+      --border:rgba(255,255,255,.10);
+    }
 
-  <body>
-    <a class="skip-link" href="#content">İçeriğe atla</a>
+    *{ box-sizing:border-box; }
 
-    <header class="site-header">
-      <div class="container header-inner">
-        <h1 class="brand">YMH354</h1>
-        <p class="tagline">Designing with CSS: Layout, Selectors, Box Model</p>
-      </div>
-    </header>
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+      background: radial-gradient(1200px 600px at 20% 0%, rgba(79,140,255,.20), transparent 60%),
+                  radial-gradient(900px 500px at 90% 10%, rgba(80,255,190,.10), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
 
-    <nav class="site-nav" aria-label="Ana menü">
-      <div class="container">
-        <ul class="nav-list">
-          <li><a href="#selectors">Selectors</a></li>
-          <li><a href="#layout">Layout</a></li>
-          <li><a href="#boxmodel">Box Model</a></li>
-          <li><a href="#responsive">Responsive</a></li>
-        </ul>
-      </div>
-    </nav>
+    .cv{
+      max-width: 980px;
+      margin: 40px auto;
+      padding: 0 16px;
+    }
 
-    <main class="container layout" id="content">
-      <article class="card" id="selectors">
-        <h2>1) Selectors + Pseudo-class</h2>
-        <p>
-          Bu paragraf normal akışta. <span class="badge">.class</span> ve
-          <span id="special">#id</span> örneği içeriyor.
-        </p>
+    .cv__card{
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px;
+      box-shadow: 0 18px 50px rgba(0,0,0,.35);
+    }
 
-        <p class="note">
-          Linkin üzerine gel: <a href="#selectors">hover örneği</a>
-        </p>
+    /* Üst kısım */
+    .cv__header{
+      display:flex;
+      gap:16px;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+    }
 
-        <button class="btn" type="button">Buton</button>
-      </article>
+    .cv__title{
+      margin:0;
+      font-size: clamp(22px, 3vw, 30px);
+      letter-spacing:.3px;
+    }
 
-      <aside class="sidebar card" id="layout">
-        <h2>2) Sidebar</h2>
-        <p>
-          Bu alan tipik web sayfası düzenini (header/nav/content/sidebar/footer)
-          göstermeye yarar.
-        </p>
+    .cv__subtitle{
+      margin:4px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
 
-        <div class="callout">
-          <strong>İpucu:</strong> box-sizing: border-box kullanmak hesaplamaları kolaylaştırır.
+    /* Etiketler */
+    .cv__badges{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(17,26,46,.55);
+      color: var(--text);
+      font-size: 13px;
+      white-space:nowrap;
+    }
+
+    .badge--accent{
+      border-color: rgba(79,140,255,.45);
+      background: rgba(79,140,255,.14);
+    }
+
+    /* İç düzen */
+    .cv__grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    @media (max-width: 860px){
+      .cv__grid{ grid-template-columns: 1fr; }
+    }
+
+    /* Bölümler */
+    .section{
+      border: 1px solid var(--border);
+      background: rgba(17,26,46,.35);
+      border-radius: 14px;
+      padding: 16px;
+    }
+
+    .section__title{
+      margin:0 0 10px;
+      font-size: 15px;
+      letter-spacing:.6px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .item{
+      padding: 12px;
+      border-radius: 12px;
+      border: 1px solid transparent;
+      background: rgba(255,255,255,.03);
+    }
+
+    .item + .item{ margin-top: 10px; }
+
+    .item:hover{
+      border-color: rgba(79,140,255,.35);
+      background: rgba(79,140,255,.08);
+    }
+
+    .item__title{
+      margin:0;
+      font-weight: 650;
+      font-size: 15px;
+    }
+
+    .item__meta{
+      margin:4px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .item__desc{
+      margin:8px 0 0;
+      color: var(--text);
+      font-size: 14px;
+    }
+
+    /* Linkler */
+    a{
+      color: var(--accent);
+      text-decoration: none;
+    }
+    a:hover{ text-decoration: underline; }
+
+    /* Liste */
+    ul{
+      margin: 8px 0 0;
+      padding-left: 18px;
+      color: var(--text);
+    }
+    li{ margin: 6px 0; }
+
+    /* Küçük yardımcı sınıflar */
+    .muted{ color: var(--muted); }
+    .hr{
+      height:1px;
+      background: var(--border);
+      border:0;
+      margin: 14px 0;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="cv">
+    <article class="cv__card">
+      <!-- Üst Başlık -->
+      <header class="cv__header">
+        <div>
+          <h1 class="cv__title">Mahmut Öney</h1>
+          <p class="cv__subtitle">Yazılım Geliştirici • İstanbul, Türkiye</p>
+          <p class="cv__subtitle">
+            <a href="mailto:mahmut@example.com">mahmut@example.com</a> ·
+            <a href="tel:+905555555555">+90 555 555 55 55</a> ·
+            <a href="https://github.com/MahmutONEY" target="_blank" rel="noreferrer">github.com/MahmutONEY</a>
+          </p>
         </div>
-      </aside>
 
-      <section class="card" id="boxmodel">
-        <h2>3) Box Model Demo</h2>
-        <div class="box-demo">
-          <div class="box">
-            <p>
-              Bu kutu; <em>content</em>, <em>padding</em>, <em>border</em>, <em>margin</em>
-              bileşenlerini görselleştirir.
-            </p>
-          </div>
+        <div class="cv__badges" aria-label="Etiketler">
+          <span class="badge badge--accent">Frontend</span>
+          <span class="badge">Backend</span>
+          <span class="badge">JavaScript</span>
+          <span class="badge">HTML/CSS</span>
         </div>
-      </section>
+      </header>
 
-      <section class="card" id="responsive">
-        <h2>4) Responsive (Media Query)</h2>
-        <p>
-          Ekran daraldığında yerleşim tek sütuna düşecek ve menü daha kompakt görünecek.
-          Tarayıcı genişliğini değiştirip gözlemleyin.
-        </p>
-      </section>
-    </main>
+      <!-- İçerik Grid -->
+      <section class="cv__grid">
+        <!-- Sol kolon -->
+        <div class="cv__col">
+          <section class="section" aria-label="Özet">
+            <h2 class="section__title">Özet</h2>
+            <div class="item">
+              <p class="item__desc">
+                Kısa bir özet metni. Buraya kendini tanıtan 2-3 cümle yazabilirsin:
+                odak alanların, güçlü yönlerin ve hedeflerin.
+              </p>
+            </div>
+          </section>
 
-    <footer class="site-footer">
-      <div class="container">
-        <small>© YMH354 Web Design and Programming</small>
-      </div>
-    </footer>
-  </body>
+          <div class="hr" role="separator"></div>
+
+          <section class="section" aria-label="Deneyim">
+            <h2 class="section__title">Deneyim</h2>
+
+            <div class="item">
+              <h3 class="item__title">Yazılım Geliştirici — Şirket Adı</h3>
+              <p class="item__meta">2024 - Devam · İstanbul</p>
+              <p class="item__desc">
+                Buraya rolünle ilgili kısa açıklama yaz.
+              </p>
+              <ul>
+                <li>Örnek: Performans iyileştirmeleri ve yeniden kullanılabilir bileşenler geliştirildi.</li>
+                <li>Örnek: REST API entegrasyonları yapıldı.</li>
+              </ul>
+            </div>
+
+            <div class="item">
+              <h3 class="item__title">Stajyer — Şirket Adı</h3>
+              <p class="item__meta">2023 (3 ay) · Uzaktan</p>
+              <p class="item__desc">
+                Buraya yaptığın proje/işleri yaz.
+              </p>
+            </div>
+          </section>
+
+          <div class="hr" role="separator"></div>
+
+          <section class="section" aria-label="Projeler">
+            <h2 class="section__title">Projeler</h2>
+
+            <div class="item">
+              <h3 class="item__title">Proje Adı</h3>
+              <p class="item__meta">
+                <a href="https://example.com" target="_blank" rel="noreferrer">Canlı</a>
+                ·
+                <a href="https://github.com/MahmutONEY" target="_blank" rel="noreferrer">Repo</a>
+              </p>
+              <p class="item__desc">
+                Projenin ne yaptığı, kullandığın teknolojiler ve katkın.
+              </p>
+            </div>
+          </section>
+        </div>
+
+        <!-- Sağ kolon -->
+        <aside class="cv__col">
+          <section class="section" aria-label="Yetenekler">
+            <h2 class="section__title">Yetenekler</h2>
+            <div class="item">
+              <ul>
+                <li>HTML, CSS, Responsive UI</li>
+                <li>JavaScript / TypeScript</li>
+                <li>React / Vue (varsa)</li>
+                <li>Node.js / API (varsa)</li>
+                <li>Git / GitHub</li>
+              </ul>
+            </div>
+          </section>
+
+          <div class="hr" role="separator"></div>
+
+          <section class="section" aria-label="Eğitim">
+            <h2 class="section__title">Eğitim</h2>
+            <div class="item">
+              <h3 class="item__title">Üniversite / Bölüm</h3>
+              <p class="item__meta">2020 - 2024</p>
+              <p class="item__desc muted">Not: İstersen ortalama, dersler veya kulüp bilgisi ekleyebilirsin.</p>
+            </div>
+          </section>
+
+          <div class="hr" role="separator"></div>
+
+          <section class="section" aria-label="Diller">
+            <h2 class="section__title">Diller</h2>
+            <div class="item">
+              <ul>
+                <li>Türkçe (Ana dil)</li>
+                <li>İngilizce (B1/B2/C1)</li>
+              </ul>
+            </div>
+          </section>
+
+          <div class="hr" role="separator"></div>
+
+          <section class="section" aria-label="Bağlantılar">
+            <h2 class="section__title">Bağlantılar</h2>
+            <div class="item">
+              <ul>
+                <li><a href="https://www.linkedin.com/in/kullaniciadi" target="_blank" rel="noreferrer">LinkedIn</a></li>
+                <li><a href="https://github.com/MahmutONEY" target="_blank" rel="noreferrer">GitHub</a></li>
+                <li><a href="https://portfolio.example.com" target="_blank" rel="noreferrer">Portfolyo</a></li>
+              </ul>
+            </div>
+          </section>
+        </aside>
+      </section>
+    </article>
+  </main>
+</body>
 </html>
