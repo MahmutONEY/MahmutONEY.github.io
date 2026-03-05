@@ -1,262 +1,425 @@
-<!doctype html>
-<html lang="tr">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mahmut Öney — Portfolyo</title>
-  <meta name="description" content="Mahmut Öney kişisel portfolyo: projeler, deneyim, Erasmus ve iletişim." />
-  <link rel="stylesheet" href="assets/css/style.css" />
-</head>
-<body>
-  <a class="skip-link" href="#main">İçeriğe atla</a>
+:root{
+  --bg: #071317;
+  --panel: #0c1e24;
+  --panel-2: #0a171c;
 
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="index.html" aria-label="Ana sayfa">
-        <span class="brand-mark" aria-hidden="true"></span>
-        <span class="brand-text">Mahmut Öney</span>
-      </a>
+  --text: #e7fbff;
+  --muted: #a8c9d2;
 
-      <nav class="nav" aria-label="Site menüsü">
-        <a href="#about">Hakkımda</a>
-        <a href="#projects">Projeler</a>
-        <a href="#experience">Deneyim</a>
-        <a href="#education">Eğitim</a>
-        <a href="#contact">İletişim</a>
-      </nav>
-    </div>
-  </header>
+  --line: rgba(231, 251, 255, .10);
 
-  <main id="main">
-    <!-- HERO -->
-    <section class="hero">
-      <div class="container hero-inner">
-        <div class="hero-text">
-          <p class="kicker">Front-End odaklı • HTML & CSS</p>
-          <h1>Merhaba, ben Mahmut.</h1>
-          <p class="lead">
-            Sade, hızlı ve erişilebilir arayüzler tasarlayıp geliştiriyorum.
-            Erasmus deneyimim sayesinde farklı ekiplerle iletişim kurmaya ve dokümantasyonla ilerlemeye alışığım.
-          </p>
+  --accent: #22d3c5;   /* turkuaz */
+  --accent-2: #1aa8ff; /* mavi */
+  --accent-3: #30e08f; /* yeşil */
 
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#projects">Projeleri gör</a>
-            <a class="btn btn-ghost" href="#contact">İletişime geç</a>
-          </div>
+  --shadow: 0 16px 40px rgba(0,0,0,.35);
+  --radius: 18px;
 
-          <ul class="meta">
-            <li><span class="meta-label">Konum</span><span class="meta-value">Türkiye</span></li>
-            <li><span class="meta-label">E-posta</span><span class="meta-value"><a href="mailto:mail@ornek.com">mail@ornek.com</a></span></li>
-            <li><span class="meta-label">GitHub</span><span class="meta-value"><a href="https://github.com/MahmutONEY" target="_blank" rel="noreferrer">MahmutONEY</a></span></li>
-          </ul>
-        </div>
+  --container: 1100px;
+}
 
-        <div class="hero-card" aria-label="Özet kart">
-          <div class="profile">
-            <div class="avatar" role="img" aria-label="Profil görseli"></div>
-            <div>
-              <p class="profile-name">Mahmut Öney</p>
-              <p class="profile-role">Web / UI geliştirme</p>
-            </div>
-          </div>
+*{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; }
+body{
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+  background:
+    radial-gradient(800px 500px at 15% 10%, rgba(34,211,197,.18), transparent 55%),
+    radial-gradient(700px 450px at 80% 15%, rgba(26,168,255,.16), transparent 55%),
+    radial-gradient(800px 500px at 60% 85%, rgba(48,224,143,.10), transparent 55%),
+    var(--bg);
+  color: var(--text);
+  line-height: 1.55;
+}
 
-          <div class="divider"></div>
+a{ color: inherit; text-decoration: none; }
+a:hover{ text-decoration: underline; text-decoration-color: rgba(34,211,197,.6); }
 
-          <ul class="highlights">
-            <li><span class="dot"></span> Responsive sayfa tasarımları</li>
-            <li><span class="dot"></span> Temiz semantik HTML</li>
-            <li><span class="dot"></span> Tutarlı CSS bileşenleri</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+.container{
+  width: min(var(--container), calc(100% - 2rem));
+  margin: 0 auto;
+}
 
-    <!-- ABOUT -->
-    <section id="about" class="section">
-      <div class="container">
-        <div class="section-head">
-          <h2>Hakkımda</h2>
-          <p class="section-subtitle">Kısa, net ve başvuru odaklı bir özet.</p>
-        </div>
+.skip-link{
+  position: absolute;
+  left: -999px;
+  top: 1rem;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  padding: .6rem .9rem;
+  border-radius: 999px;
+}
+.skip-link:focus{ left: 1rem; }
 
-        <div class="grid-2">
-          <div class="card">
-            <h3>Ne yapıyorum?</h3>
-            <p>
-              HTML ve CSS ile modern, okunabilir ve mobil uyumlu arayüzler geliştiriyorum.
-              Proje yaparken tasarım hiyerarşisine, boşluk kullanımına ve erişilebilirliğe dikkat ederim.
-            </p>
-          </div>
+.site-header{
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(10px);
+  background: rgba(7,19,23,.55);
+  border-bottom: 1px solid var(--line);
+}
 
-          <div class="card">
-            <h3>Erasmus</h3>
-            <p>
-              Erasmus sürecinde farklı kültürlerden insanlarla çalışmanın pratiğini edindim.
-              İngilizce dokümantasyonla ilerleme, öz-disiplin ve iletişim tarafım bu süreçte güçlendi.
-            </p>
-            <ul class="bullets">
-              <li>Ülke/üniversite: <span class="muted">burayı doldur</span></li>
-              <li>Dönem: <span class="muted">örn. 2024 Bahar</span></li>
-              <li>Odak: <span class="muted">örn. web, yazılım, proje çalışmaları</span></li>
-            </ul>
-          </div>
-        </div>
+.header-inner{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: .9rem 0;
+  gap: 1rem;
+}
 
-        <div class="card mt">
-          <h3>Yetenekler</h3>
-          <div class="chips">
-            <span class="chip">HTML (Semantik)</span>
-            <span class="chip">CSS (Flexbox/Grid)</span>
-            <span class="chip">Responsive Tasarım</span>
-            <span class="chip">Git/GitHub</span>
-            <span class="chip">Temel UI/UX</span>
-          </div>
-        </div>
-      </div>
-    </section>
+.brand{
+  display: inline-flex;
+  align-items: center;
+  gap: .65rem;
+  text-decoration: none;
+}
+.brand-mark{
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  box-shadow: 0 0 0 4px rgba(34,211,197,.12);
+}
+.brand-text{
+  font-weight: 650;
+  letter-spacing: .2px;
+}
 
-    <!-- PROJECTS -->
-    <section id="projects" class="section alt">
-      <div class="container">
-        <div class="section-head">
-          <h2>Projeler</h2>
-          <p class="section-subtitle">Her kart ayrı bir sayfaya gider (detay + görseller + linkler).</p>
-        </div>
+.nav{
+  display: flex;
+  gap: .9rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+.nav a{
+  padding: .4rem .55rem;
+  border-radius: 10px;
+  color: var(--muted);
+  text-decoration: none;
+}
+.nav a:hover{
+  color: var(--text);
+  background: rgba(231,251,255,.06);
+  text-decoration: none;
+}
 
-        <div class="projects-grid">
-          <article class="project-card">
-            <a class="project-link" href="projects/proje-1.html">
-              <div class="project-thumb" aria-hidden="true"></div>
-              <div class="project-body">
-                <h3 class="project-title">Proje 1 — Landing Page</h3>
-                <p class="project-desc">Kurumsal bir sayfa taslağı: responsive düzen, net tipografi.</p>
-                <div class="project-meta">
-                  <span class="tag">HTML</span>
-                  <span class="tag">CSS</span>
-                  <span class="tag tag-ghost">Responsive</span>
-                </div>
-              </div>
-            </a>
-          </article>
+.hero{
+  padding: 4.2rem 0 2.4rem;
+}
+.hero-inner{
+  display: grid;
+  grid-template-columns: 1.15fr .85fr;
+  gap: 1.6rem;
+  align-items: start;
+}
 
-          <article class="project-card">
-            <a class="project-link" href="projects/proje-2.html">
-              <div class="project-thumb project-thumb-2" aria-hidden="true"></div>
-              <div class="project-body">
-                <h3 class="project-title">Proje 2 — Portfolio Template</h3>
-                <p class="project-desc">Kart yapısı, grid düzeni ve okunabilir içerik akışı.</p>
-                <div class="project-meta">
-                  <span class="tag">HTML</span>
-                  <span class="tag">CSS</span>
-                  <span class="tag tag-ghost">Grid</span>
-                </div>
-              </div>
-            </a>
-          </article>
+.kicker{
+  display: inline-block;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  background: rgba(231,251,255,.04);
+  padding: .35rem .7rem;
+  border-radius: 999px;
+  font-size: .95rem;
+}
 
-          <article class="project-card">
-            <a class="project-link" href="projects/proje-3.html">
-              <div class="project-thumb project-thumb-3" aria-hidden="true"></div>
-              <div class="project-body">
-                <h3 class="project-title">Proje 3 — Blog UI</h3>
-                <p class="project-desc">Makale listesi + detay sayfası tasarımı (sadece UI).</p>
-                <div class="project-meta">
-                  <span class="tag">HTML</span>
-                  <span class="tag">CSS</span>
-                  <span class="tag tag-ghost">Typography</span>
-                </div>
-              </div>
-            </a>
-          </article>
-        </div>
-      </div>
-    </section>
+h1{
+  margin: .8rem 0 .6rem;
+  font-size: clamp(2rem, 3vw, 2.6rem);
+  line-height: 1.15;
+  letter-spacing: -.4px;
+}
+.lead{
+  color: var(--muted);
+  font-size: 1.05rem;
+  max-width: 64ch;
+}
 
-    <!-- EXPERIENCE -->
-    <section id="experience" class="section">
-      <div class="container">
-        <div class="section-head">
-          <h2>Deneyim</h2>
-          <p class="section-subtitle">Staj, gönüllülük, kulüp çalışmaları veya freelance.</p>
-        </div>
+.hero-actions{
+  display: flex;
+  gap: .8rem;
+  margin-top: 1.1rem;
+  flex-wrap: wrap;
+}
 
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-when">2025 — 2026</div>
-            <div class="timeline-what card">
-              <h3>Kulüp / Gönüllü Çalışma (örnek)</h3>
-              <p class="muted">Rol — Kısa açıklama</p>
-              <ul class="bullets">
-                <li>Sayfa tasarımını responsive hale getirdim.</li>
-                <li>CSS bileşenleriyle tekrar kullanılabilir yapı kurdum.</li>
-                <li>Repo düzeni ve README ile sunumu toparladım.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+.btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: .72rem 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: rgba(231,251,255,.04);
+  text-decoration: none;
+  font-weight: 600;
+}
+.btn:hover{ text-decoration: none; }
+.btn-primary{
+  border-color: rgba(34,211,197,.35);
+  background: linear-gradient(135deg, rgba(34,211,197,.22), rgba(26,168,255,.14));
+  box-shadow: 0 12px 30px rgba(34,211,197,.10);
+}
+.btn-ghost{
+  color: var(--muted);
+}
 
-    <!-- EDUCATION -->
-    <section id="education" class="section alt">
-      <div class="container">
-        <div class="section-head">
-          <h2>Eğitim</h2>
-          <p class="section-subtitle">Okul bilgisi + ilgili ders/odak alanları.</p>
-        </div>
+.meta{
+  margin: 1.4rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: .5rem;
+  max-width: 520px;
+}
+.meta li{
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px dashed rgba(231,251,255,.12);
+  padding-bottom: .5rem;
+}
+.meta-label{ color: var(--muted); }
+.meta-value a{ color: var(--text); }
 
-        <div class="grid-2">
-          <div class="card">
-            <h3>Üniversite / Bölüm</h3>
-            <p class="muted">20XX — 20XX</p>
-            <ul class="bullets">
-              <li>İlgili dersler: Web, Veri Yapıları, OOP…</li>
-              <li>Projeler: <span class="muted">burayı doldur</span></li>
-            </ul>
-          </div>
+.hero-card{
+  background: linear-gradient(180deg, rgba(12,30,36,.92), rgba(10,23,28,.92));
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.1rem;
+  box-shadow: var(--shadow);
+}
 
-          <div class="card">
-            <h3>Sertifikalar</h3>
-            <ul class="bullets">
-              <li>CSS / HTML kursu — <span class="muted">platform • yıl</span></li>
-              <li>Git & GitHub — <span class="muted">platform • yıl</span></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
+.profile{
+  display: flex;
+  align-items: center;
+  gap: .9rem;
+}
+.avatar{
+  width: 54px;
+  height: 54px;
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(34,211,197,.55), transparent 55%),
+    radial-gradient(circle at 70% 65%, rgba(26,168,255,.42), transparent 55%),
+    rgba(231,251,255,.06);
+  border: 1px solid rgba(231,251,255,.12);
+}
+.profile-name{ margin: 0; font-weight: 700; }
+.profile-role{ margin: .1rem 0 0; color: var(--muted); font-size: .95rem; }
 
-    <!-- CONTACT -->
-    <section id="contact" class="section">
-      <div class="container">
-        <div class="section-head">
-          <h2>İletişim</h2>
-          <p class="section-subtitle">Kısa bir mesajla ulaşabilirsin.</p>
-        </div>
+.divider{
+  height: 1px;
+  background: var(--line);
+  margin: 1rem 0;
+}
 
-        <div class="contact card">
-          <div>
-            <p class="muted">E-posta</p>
-            <p class="contact-strong"><a href="mailto:mail@ornek.com">mail@ornek.com</a></p>
-          </div>
-          <div>
-            <p class="muted">GitHub</p>
-            <p class="contact-strong"><a href="https://github.com/MahmutONEY" target="_blank" rel="noreferrer">github.com/MahmutONEY</a></p>
-          </div>
-          <div>
-            <p class="muted">LinkedIn</p>
-            <p class="contact-strong"><span class="muted">linkini ekle</span></p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+.highlights{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: .55rem;
+  color: var(--muted);
+}
+.dot{
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px rgba(34,211,197,.12);
+  margin-right: .5rem;
+  transform: translateY(-1px);
+}
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <p>© <span id="year">2026</span> Mahmut Öney</p>
-      <a class="to-top" href="#main">Yukarı</a>
-    </div>
-  </footer>
-</body>
-</html>
+.section{
+  padding: 3rem 0;
+}
+.section.alt{
+  background: rgba(231,251,255,.02);
+  border-top: 1px solid rgba(231,251,255,.06);
+  border-bottom: 1px solid rgba(231,251,255,.06);
+}
+
+.section-head{
+  margin-bottom: 1.3rem;
+}
+.section-head h2{
+  margin: 0 0 .35rem;
+  font-size: 1.6rem;
+  letter-spacing: -.2px;
+}
+.section-subtitle{
+  margin: 0;
+  color: var(--muted);
+}
+
+.grid-2{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.card{
+  background: rgba(12,30,36,.70);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.1rem;
+}
+.card h3{ margin: 0 0 .55rem; }
+.card p{ margin: 0; color: var(--muted); }
+.mt{ margin-top: 1rem; }
+
+.bullets{
+  margin: .8rem 0 0;
+  padding-left: 1.1rem;
+  color: var(--muted);
+}
+.muted{ color: var(--muted); }
+
+.chips{
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-top: .6rem;
+}
+.chip{
+  border: 1px solid rgba(231,251,255,.12);
+  background: rgba(231,251,255,.04);
+  padding: .35rem .55rem;
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: .95rem;
+}
+
+.projects-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.project-card{
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: rgba(12,30,36,.65);
+  box-shadow: 0 10px 24px rgba(0,0,0,.18);
+}
+.project-link{
+  display: block;
+  text-decoration: none;
+}
+.project-link:hover{ text-decoration: none; }
+
+.project-thumb{
+  height: 130px;
+  background:
+    radial-gradient(400px 160px at 20% 30%, rgba(34,211,197,.35), transparent 60%),
+    radial-gradient(350px 160px at 80% 60%, rgba(26,168,255,.28), transparent 60%),
+    rgba(231,251,255,.04);
+  border-bottom: 1px solid rgba(231,251,255,.08);
+}
+.project-thumb-2{
+  background:
+    radial-gradient(420px 180px at 30% 50%, rgba(48,224,143,.28), transparent 60%),
+    radial-gradient(360px 150px at 75% 40%, rgba(34,211,197,.28), transparent 60%),
+    rgba(231,251,255,.04);
+}
+.project-thumb-3{
+  background:
+    radial-gradient(420px 170px at 25% 35%, rgba(26,168,255,.25), transparent 60%),
+    radial-gradient(360px 160px at 75% 65%, rgba(34,211,197,.22), transparent 60%),
+    rgba(231,251,255,.04);
+}
+
+.project-body{
+  padding: 1rem;
+}
+.project-title{
+  margin: 0 0 .35rem;
+  font-size: 1.1rem;
+}
+.project-desc{
+  margin: 0 0 .7rem;
+  color: var(--muted);
+}
+.project-meta{
+  display: flex;
+  gap: .45rem;
+  flex-wrap: wrap;
+}
+.tag{
+  display: inline-block;
+  font-size: .9rem;
+  padding: .25rem .5rem;
+  border-radius: 999px;
+  border: 1px solid rgba(34,211,197,.22);
+  background: rgba(34,211,197,.08);
+  color: var(--text);
+}
+.tag-ghost{
+  border-color: rgba(231,251,255,.12);
+  background: rgba(231,251,255,.04);
+  color: var(--muted);
+}
+
+.timeline{
+  display: grid;
+  gap: 1rem;
+}
+.timeline-item{
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 1rem;
+  align-items: start;
+}
+.timeline-when{
+  color: var(--muted);
+  padding-top: .8rem;
+}
+
+.contact{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+.contact-strong{
+  margin: .1rem 0 0;
+  font-weight: 650;
+}
+.contact a{ text-decoration: none; }
+.contact a:hover{ text-decoration: underline; }
+
+.site-footer{
+  border-top: 1px solid var(--line);
+  padding: 1.6rem 0;
+  background: rgba(7,19,23,.60);
+}
+.footer-inner{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  color: var(--muted);
+}
+.to-top{
+  color: var(--muted);
+  text-decoration: none;
+  border: 1px solid rgba(231,251,255,.12);
+  padding: .35rem .55rem;
+  border-radius: 12px;
+}
+.to-top:hover{ color: var(--text); text-decoration: none; }
+
+@media (max-width: 920px){
+  .hero-inner{ grid-template-columns: 1fr; }
+  .projects-grid{ grid-template-columns: 1fr 1fr; }
+  .contact{ grid-template-columns: 1fr; }
+  .timeline-item{ grid-template-columns: 1fr; }
+}
+
+@media (max-width: 560px){
+  .projects-grid{ grid-template-columns: 1fr; }
+  .nav{ gap: .35rem; }
+}
